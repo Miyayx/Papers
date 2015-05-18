@@ -98,6 +98,14 @@ Fig. \ref{fig:baidu-article} shows a snap of an article in Baidu Baike. The five
 In order to build a bilingual knowledge base, we need the relation between Chinese source and English source, which helps merge different language information into their unique and common topic. In Wikipedia, most articles have language links which guide the reader to the article in specific language under the same topic. Fig. \ref{fig:lang-link} shows an example of language links in Wikipedia. Taking advantage of such existed links in Wikipedia, we can generate an initial bilingual ontology based on Chinese and English Wikipedia. However, the result is just an ontology based on Wikipedia, like DBpedia. To combine Hudong and Baidu Baike ,which are lack of cross-lingual information but more Chinese source, we employ the approach from \cite{} to discover bilingual links between English Wikipedia and Hudong in Section \ref{sec:cld}  
 
 \subsection{Definitions}
+Here we list definitions involved in the later sections/
+Definition 1: A Encyclopedia is considered as a collection of articles, category system and links, which can be defined as a 3-tuple:
+\begin{equation}
+W = <A,C,L>
+\end{equation} 
+where A denotes articles, C denotes categories, and L denotes links in W.
+We involve four encyclopedias, which are expressed as Wen, Wzh, Whd and Wbb.
+Definition 2: According to Section \ref {sec:} 
 
 \section{Extraction}
 \label{sec:oe}
