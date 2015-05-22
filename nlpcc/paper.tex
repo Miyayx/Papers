@@ -238,15 +238,50 @@ To build a knowledge base, we first define specific URI to identify each element
 四个百科的数据统计，包括我们有的百科数据的发布时间，格式（xml。html），article数量，抽取的instance数量，concept数量，property数量, wiki中跨语言链接数量
 其实最好有一些我们在抽取过程中删剪的不符合要求的concept或者property数量，不过要看有没有时间再跑一下了
 \subsection{Extracted Knowledge Base}
-xlore 的统计数据，包括instance数量，concept数量，property数量，有双语的instance、concept、property，只有中文的，只有英文的
-顶层分类以及下属concept和instance数量
-有最多instance的property(object property)，以及相应的instance数量
-有最多的text的property(datatype property)，以及数量
-删除的taxonomy关系（如果重做实验的话）
+We collect the resources from 4 wiki sites, Enwiki, Zhwiki, Hudong, and Baidu. Each of the wikis has three types of information, which can be utilized for building our ontology, namely, specific articles, classification system, and attribute of articles. We extract each raw data, then form the extracted information into well-structured data. Table\ref{tab:extract-result} the result we get after elementary extraction in 4 different wiki sources.
+
+\begin{table}[h]
+\small
+\centering
+\caption{Statistics of elementary extraction result}
+\label{tab:extract-result}
+    \begin{tabular}{|l|l|l|l|l|}
+        \hline
+                 & Enwiki  & Zhwiki & Hudong  & Baidu   \\ \hline
+        Instance & 4304113 & 662650 & 5590751 & 5622404 \\ \hline
+        Concept  & 982432  & 159705 & 31802   & 1300    \\ \hline
+        Property & 43976   & 18842  & 1187    & 139634  \\ \hline
+    \end{tabular}
+\end{table}
+
+After fusing the heterogeneous resources, we harvest a cross-lingual graph with 1,093,855 classes, 200,223 properties, and 11,721,238 instances separately. With different methods of extraction and language linking discovery, these three kinds of entries show different results in languages. We give a breakdown of both Chinese knowledge and English knowledge in Table\ref{tab:kb-result}.
+
+\begin{table}[h]
+\small
+\centering
+\caption{Statistics of our knowledge base}
+\label{tab:kb-result}
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+                        & Concepts  & Instance   & Property \\ \hline
+        English         & 982,982   & 4,311,719  & 54,802   \\ \hline
+        English\%       & 89.86\%   & 37.79\%    & 27.37\%  \\ \hline
+        Chinese         & 176,648   & 7,842,117  & 167,083  \\ \hline
+        Chinese\%       & 16.15\%   & 66.9\%     & 83.45\%  \\ \hline
+        Cross-lingual   & 65,775    & 432,598    & 21,662   \\ \hline
+        Cross-lingual\% & 6.01\%    & 3.7\%      & 10.82\%  \\ \hline
+        Only English    & 917,207   &            & 33140    \\ \hline
+        Only English\%  & 83.9\%    &            & 16.6\%   \\ \hline
+        Only Chinese    & 110,873   &            & 145,421  \\ \hline
+        Only Chinese\%  & 10.1\%    &            & 72.6\%   \\ \hline
+        Sum             & 1,093,855 & 11,721,238 & 200,223  \\ \hline
+    \end{tabular}
+\end{table}
+
+Our knowledge graph is organized in Openlink Virtuoso, which is a data management platform covering various server, including triple store.
 
 \subsection{Query Interface}
-各种我们自己定义的uri，比如abstract，reference。。。。
-各种查询语句示例
+We provide a website to demonstrate our knowledge in the forms of class, instance and property. The users of our system can choose language preference which is convenient for both English speaker and Chinese speaker. In the class webpage, we exhibit the label, super classes, subclasses, related topics, properties and instances of the specific class in bilingual way on condition that the corresponding English entries or Chinese entries exist.  In the instance webpage we display bilingual label, super classes, related classes, abstract, property key value pairs, images and references. In the property webpage, we presents bilingual label, domains, ranges, and related instances of each property. Beside these user-friendly pages, we as well provide SPARQL interface for professional users to query our knowledge graph. Users can choose the language tags of their desired results by \textbf{"filter(langMatches(?label),"en"))"} or \textbf{"filter(langMatches (?label),"zh"))"}.
 
 \section{Related Work}
 \label{sec:work}
