@@ -44,17 +44,17 @@ Tsinghua University, Beijing 100084, China\\
 \end{abstract}
 
 \section{Introduction}
-With LOD growing recent years, more and more knowledge bases are generated for information sharing. Several large-scale knowledge bases, such as DBpedia\cite{mendes2012dbpedia}, YAGO\cite{mahdisoltani2014yago3} and Freebase\cite{bollacker2008freebase} are well-known and often used for information extraction\cite{dutta2013integrating}, entity linking\cite{shen2012linden}, recommendation\cite{passant2010dbrec,fernandez2011generic,kaminskas2012knowledge}and so on. These knowledge bases are not only cross-domain but also multilingual, which is benefit for global knowledge sharing. 
+With Linked Open Data(LOD) developing recent years, an increasing number of knowledge bases are generated for information sharing. Large-scale knowledge bases in LOD project, such as DBpedia\cite{mendes2012dbpedia}, YAGO\cite{mahdisoltani2014yago3} and Freebase\cite{bollacker2008freebase} are often used for information extraction\cite{dutta2013integrating}, entity linking\cite{shen2012linden}, recommendation\cite{passant2010dbrec,fernandez2011generic,kaminskas2012knowledge}and many other applications. These knowledge bases are not only cross-domain but also multilingual, which is benefit for global knowledge sharing.
 
-Take DBpedia as an example. It extracts structured information from Wikipedia, and has already contained approximately 38.3 million things. Right now DBpedia provides 124 versions of non-English language including Chinese. There are XXX instances and 11 classes in Chinese. Obviously, the quality of Chinese information is not enough for further research or application. 
+Take DBpedia as an example, it extracts structured information from Wikipedia and has already contained approximately 38.3 million things. Now DBpedia provides 124 versions of non-English language including Chinese. However, there are only XXX instances and 11 classes in Chinese. Obviously, the quality of Chinese information is insufficient for further research and application.
 
-A cross-lingual knowledge base has benefit efforts on global knowledge sharing, understanding and expanding. However, to build an available knowledge base, some problems are to be addressed: (1) The imbalanced size of different language sources leads to less entities. Comparing the number of articles in English Wikipedia and that in Chinese Wikipedia, which are 5 million and 800 thousand, it's obvious that to structure a knowledge base with Chinese is more difficult. (2) The number of existing cross-lingual links in Wikipedia is so small, which affects the quality of a bilingual knowledge base. Especially there is no evident links in properties. Statistically, only XX thousand cross-lingual links are there between English and Chinese articles. (3) The large but not rigorous category system in Wikipedia causes incorrect semantic relations in taxonomy. For example,\textcolor{red}{example}
+A cross-lingual knowledge base has positive effect on global knowledge sharing, understanding and expanding. However, to build an available knowledge base, some problems must be addressed: (1) The imbalanced size of different language sources leads to less entities. Comparing the number of articles in English Wikipedia and those in Chinese Wikipedia, which are 5 million and 800 thousand separately, it's obvious that to structure a knowledge base in Chinese with Wikipedia is more challenging. (2) The number of existing cross-lingual links in Wikipedia accounts for a low proportion, which affects the quality of a bilingual knowledge base. Especially there is no evident links in properties. Statistically, only XX thousand cross-lingual links can be found between English and Chinese articles. (3) The large but not rigorous category system in Wikipedia causes incorrect semantic relations in taxonomy. For example,\textcolor{red}{example}
 
 %In Semantic Web, a large-scale multilingual knowledge base can help …
 
-%Thus it’s significant to build a Chinese-English knowledge base and benefit from it. 
+%Thus it’s significant to build a Chinese-English knowledge base and benefit from it.
 
-Currently, there are several massive knowledge encyclopedias in Chinese, including Hudong Baike and Baidu Baike. To solve the unbalance problem, we utilize such separated sources to enrich our Chinese information. In this paper, we propose an approach to combine four resources, which are English Wikipedia, Chinese Wikipedia, Hudong Baike and Baidu Baike, into one cross-lingual knowledge base, which contains XXX concepts, XXX instances and XXX properties. To get a more available result, we also make judgement on the relation among concepts and instances. At last, a query interface is provided to access the knowledge base. Specifically, our work makes the following contributions:
+Currently, there are several massive knowledge encyclopedias in Chinese, including Hudong Baike and Baidu Baike. To solve the imbalance problem, we utilize such separated sources to enrich our Chinese information. In this paper, we propose an approach to combine four resources, which are English Wikipedia, Chinese Wikipedia, Hudong Baike and Baidu Baike, into one cross-lingual knowledge base, which contains XXX concepts, XXX instances and XXX properties. To get a more available result, we also make judgement on the relation among concepts and instances. At last, a query interface is provided to access the knowledge base. Specifically, our work makes the following contributions:
 \begin{itemize}
   \item We propose a method to build a Chinese-English cross-lingual knowledge base combining multi-encyclopedias. Among them, two  Chinese encyclopedias are utilized to helps balance and enrich information of two languages.
   \item We extend the cross-lingual link set by employing a cross-lingual knowledge linking discovery approach for concept and instance, and analysing templates in Wikipedia for property.
@@ -76,7 +76,7 @@ Nowadays, Wikipedia is the largest data store of human knowledge. It was launche
 Articles in Wikipedia are manually edited by various authors. Wikipedia provides many templates to guide authors composing their context in a standard way, so do infoboxes. For example, The infobox in film 星际穿越(Interstellar) use the Template \emph{Infobox film}. Infobox template maintains a property set of similar articles and display labels on webpage.
 
 \subsubsection{Other Chinese Encyclopedias}
-There are several large-scale monolingual Chinese Encyclopedias currently. Among those, Baidu Baike and Hudong Baike are the most well-known. Hudong Baike was founded in 2005 and contains more than 12 millions articles with about 9 millions experts' contribution until 2015. At the mean time, Baidu Baike maintains more than 11 millions articles. These two resources are similar in article structure, sometimes even in content. 
+There are several large-scale monolingual Chinese Encyclopedias currently. Among those, Baidu Baike and Hudong Baike are the most well-known. Hudong Baike was founded in 2005 and contains more than 12 millions articles with about 9 millions experts' contribution until 2015. At the mean time, Baidu Baike maintains more than 11 millions articles. These two resources are similar in article structure, sometimes even in content.
 
 \subsubsection{Encyclopedia Page}
 \label{sec:ep}
@@ -91,12 +91,12 @@ All these four encyclopedias have two important elements, articles and category 
 \end{figure}
 \begin{itemize}
   \item Title: A Title is the label of entity, which is unique to an article so that it can be used to distinguish entities.
-  \item Abstract: An abstract is a brief summarize of the entity. It's always the first paragraph of an article. Usually it can be taken as an important feature due to the summary content. 
+  \item Abstract: An abstract is a brief summarize of the entity. It's always the first paragraph of an article. Usually it can be taken as an important feature due to the summary content.
   \item Infobox: Most of articles contain infobox. An infobox maintains structured data which are frequently subject-attribute-value triples formalized as a table. Information in this table includes important properties of an entity.
   \item Links: Links are entries to other articles within the encyclopedia. They lead readers to reference articles. Actually, they represent the relations between the current article and other articles.
   \item Category: The categories that an article belongs to are usually listed at the bottom of article page, shown as tags. An article attaches to one or more categories.
 \end{itemize}
-Fig. \ref{fig:interstellar} shows a snap of an article in Chinese Wikipedia. 
+Fig. \ref{fig:interstellar} shows a snap of an article in Chinese Wikipedia.
 \begin{figure}[ht]
     \centerline{\includegraphics[width=1\columnwidth]{fig/interstellar}}
     \label{fig:interstellar}
@@ -104,7 +104,7 @@ Fig. \ref{fig:interstellar} shows a snap of an article in Chinese Wikipedia.
 \end{figure}%
 
 \subsection{Cross-lingual Links}
-In order to build a cross-lingual knowledge base, we need the relation between Chinese source and English source, which helps merge different language information into their common entities. In Wikipedia, most articles have language links which guide the reader to the article in specific language under the same entity. Fig. \ref{fig:interstellar}shows language links of \emph{Interstellar} is on the right of Wikipedia page. Taking advantage of human established language links, we can generate an initial cross-lingual ontology based on Chinese and English Wikipedia, similar to DBpedia. Afterwards, to combine Hudong Baike and Baidu Baike, which are lack of cross-lingual information but rich in Chinese data, we employ the approach proposed in \cite{wang2012cross} to discover cross-lingual links between English Wikipedia and Baidu Baike. 
+In order to build a cross-lingual knowledge base, we need the relation between Chinese source and English source, which helps merge different language information into their common entities. In Wikipedia, most articles have language links which guide the reader to the article in specific language under the same entity. Fig. \ref{fig:interstellar}shows language links of \emph{Interstellar} is on the right of Wikipedia page. Taking advantage of human established language links, we can generate an initial cross-lingual ontology based on Chinese and English Wikipedia, similar to DBpedia. Afterwards, to combine Hudong Baike and Baidu Baike, which are lack of cross-lingual information but rich in Chinese data, we employ the approach proposed in \cite{wang2012cross} to discover cross-lingual links between English Wikipedia and Baidu Baike.
 
 \subsection{Definitions}
 \label{sec:definition}
@@ -123,7 +123,7 @@ where $Ti(a),AB(a),Li(a),I(a),C(a)$ denotes title, abstract, links, infobox, cat
 \textbf{Definition 4:} An Infobox $I(a)$ in an article contains a set of attribute-value pairs {$p_{1}$, $p_{2}$,...}. In Wikipedia, an infobox is usually edited based on an appropriate infobox template recommended by Wikipedia, which here we denote as $T(a)$. Templates specify certain attributes, which are usually different from those displayed on the web page. Thus, we define an attribute-value pair as a triple $p=<tl,dl,v>$, where $tl$ is attribute label in template, $dl$ is displayed label in web page and $v$ is the corresponding value.
 
 \section{Procedure Overview}
-Fig. \ref{fig:procedure} presents the whole procedure of our knowledge base building. 
+Fig. \ref{fig:procedure} presents the whole procedure of our knowledge base building.
 \begin{figure}[ht]
     \centerline{\includegraphics[width=1\columnwidth]{fig/procedure}}
     \label{fig:procedure}
@@ -139,7 +139,7 @@ We prepare data for the knowledge base by a series of preprocessing operations. 
 \label{sec:ce}
 A concept is defined as a type of similar instances. For example, the concept of instance \emph{Interstellar} is \emph{Movie}. In general, a concept has super classes and sub classes, which means it has \emph{subClassOf} relation with other classes. Concepts comprise a taxonomy which presents a backbone of an ontology.
 
-In an encyclopedia, a category groups several articles and also has super-categories and sub-categories, just like concept does. Therefore we can extract concepts based on existing category system. 
+In an encyclopedia, a category groups several articles and also has super-categories and sub-categories, just like concept does. Therefore we can extract concepts based on existing category system.
 
 However, the whole taxonomy can not directly transform from category system because of the following problems:
 \begin{itemize}
@@ -198,7 +198,7 @@ However, due to following templates, Infobox-properties have no obvious cross-li
 In order to make the ontology of one encyclopedia link to others, we unify the same concept, instance and property from four source to unique one and make identifier. For example, we merge instances by the following method:
 
 \begin{enumerate}[1)]
-    \item Given an instance extracted from Chinese Wikipedia, find the entity in Hudong and Baidu Baike with the same title. 
+    \item Given an instance extracted from Chinese Wikipedia, find the entity in Hudong and Baidu Baike with the same title.
     \item Given an instance extracted from Hudong, find the entity which is not in Chinese Wikipedia but in BaiduBaike with the same title.
     \item The other instances existing in only one encyclopedia are considered as an independent instance. Up to now, we have combined all Chinese articles describing the same entity as one instance. Each instance may correspond to 1 to 3 sources.
     \item To a $L_{z}(a)$, which is same as $Ti(a)$, find whether there is an English cross-lingual link in $CL<L_{e}, L_{z}>$. If exists, make the two as one instance and identify it using an ID.
@@ -207,7 +207,7 @@ In order to make the ontology of one encyclopedia link to others, we unify the s
 
 After the above steps, we acquire a list of instances and their unique IDs. Some of them contain cross-lingual information while some contain monolingual.
 
-The process of unify concept and property is the same as instance. Meanwhile, all the relations in all sources are kept to prevent loss of information. 
+The process of unify concept and property is the same as instance. Meanwhile, all the relations in all sources are kept to prevent loss of information.
 
 \subsection{Taxonomy Prune}
 \label{sec:tp}
@@ -286,14 +286,14 @@ We provide a website to demonstrate our knowledge in the forms of class, instanc
 \label{sec:work}
 In this section, we introduce some related knowledge bases and cross-lingual knowledge linking methods are referred to.
 \subsection{Chinese Knowledge Bases}
-Currently, several large-scale Chinese knowledge bases have been generated. Zhishi.me\cite{niu2011zhishi,wang2014publishing} is the first large-scale Linking Open Data published. It acquires structural information from three original sources, Chinese Wikipedia, BaiduBaike and Hudong and gets more than 5 million distinct entities. Zhishi.me helps generate knowledge base focused on relations in Junfeng Pan’s work\cite{pan2012building}. 
+Currently, several large-scale Chinese knowledge bases have been generated. Zhishi.me\cite{niu2011zhishi,wang2014publishing} is the first large-scale Linking Open Data published. It acquires structural information from three original sources, Chinese Wikipedia, BaiduBaike and Hudong and gets more than 5 million distinct entities. Zhishi.me helps generate knowledge base focused on relations in Junfeng Pan’s work\cite{pan2012building}.
 Similar with Zhishi.me, CKB\cite{wang2012building} is created from Hudong Baike. It first learns an ontology based on category system and properties, and then collects 19542 concepts, 2381 properties, 802593 instances. Besides using existing encyclopedias, CASIA-KB employs other types of sources(e.g. microblog posts, news pages, images) to enrich the structured knowledge.
 \subsection{Cross-lingual Knowledge Bases}
 DBpedia \cite{auer2007dbpedia,mendes2012dbpedia} is one of the most used cross-lingual knowledge base in the world. It's extracts various kinds of structured information from Wikipedia and employ the multilingual characteristic of Wikipedia to generate 97 language versions of content. This knowledge base is widely applied in many domain, including media recommendation \cite{passant2010dbrec,fernandez2011generic,kaminskas2012knowledge}, entity linking\cite{mendes2011evaluating} and information extraction \cite{dutta2013integrating}.
-Universal WordNet(UWN)\cite{de2012uwn} is a large multilingual lexical knowledge base which is build from WordNet and enriched its entities from Wikipedia. It is constructed using sophisticated knowledge extraction, link prediction, information integration, and taxonomy induction methods. The API is available to over 200 languages and more than 16 million words and names. UWN provides semantic relationship of list of word meanings for Aya's work on conceptual search \cite{al2015conceptual} 
+Universal WordNet(UWN)\cite{de2012uwn} is a large multilingual lexical knowledge base which is build from WordNet and enriched its entities from Wikipedia. It is constructed using sophisticated knowledge extraction, link prediction, information integration, and taxonomy induction methods. The API is available to over 200 languages and more than 16 million words and names. UWN provides semantic relationship of list of word meanings for Aya's work on conceptual search \cite{al2015conceptual}
 
 %\subsection{Cross-lingual Knowledge Linking}
-%Discovering more cross-lingual links is benefit to development of a multilingual knowledge base. General method is divided into two steps. First find missing link candidates using link structure of articles and then decide whether candidates are cross links or not by classification. \cite{sorg2008enriching} employs such approach to resolve the problem of automatically inducing new cross-language links. Wang\cite{wang2012cross} utilize a linkage factor graph model 
+%Discovering more cross-lingual links is benefit to development of a multilingual knowledge base. General method is divided into two steps. First find missing link candidates using link structure of articles and then decide whether candidates are cross links or not by classification. \cite{sorg2008enriching} employs such approach to resolve the problem of automatically inducing new cross-language links. Wang\cite{wang2012cross} utilize a linkage factor graph model
 
 \section{Conclusion}
 \label{sec:con}
@@ -320,7 +320,7 @@ Initialization: $CL_{p} = \{\} $\\
 }
 
 \ForEach {English Article $A_{e}$ \in $AS_{e}$}{
-    $L_{e}$ = label of $A_{e}$ 
+    $L_{e}$ = label of $A_{e}$
     \eIf {$L_{e} \in CL$}{
         $L_{z} = CL\left[L_{e}\right]$ ,\ $A_{z} = AS_{z}\left[L_{z}\right]$ \\
 
