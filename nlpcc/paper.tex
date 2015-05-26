@@ -46,19 +46,19 @@ Tsinghua University, Beijing 100084, China\\
 \section{Introduction}
 With Linked Open Data(LOD) developing recent years, an increasing number of knowledge bases are generated for information sharing. Large-scale knowledge bases in LOD project, such as DBpedia\cite{mendes2012dbpedia}, YAGO\cite{mahdisoltani2014yago3} and Freebase\cite{bollacker2008freebase} are often used for information extraction\cite{dutta2013integrating}, entity linking\cite{shen2012linden}, recommendation\cite{passant2010dbrec,fernandez2011generic,kaminskas2012knowledge}and many other applications. These knowledge bases are not only cross-domain but also multilingual, which is benefit for global knowledge sharing.
 
-Take DBpedia as an example, it extracts structured information from Wikipedia and has already contained approximately 38.3 million things. Now DBpedia provides 124 versions of non-English language including Chinese. However, there are only XXX instances and 11 classes in Chinese. Obviously, the quality of Chinese information is insufficient for further research and application.
+ The nucleus of LOD DBpedia extracts structured information from Wikipedia and has already contained approximately 38.3 million things. Now DBpedia provides 124 versions of non-English language including Chinese. However, there are only XXX instances and 11 classes in Chinese. Compared with the 4.58 million things in English, the quality of Chinese information is obviously insufficient for further research and application.
 
-A cross-lingual knowledge base has positive effect on global knowledge sharing, understanding and expanding. However, to build an available knowledge base, some problems must be addressed: (1) The imbalanced size of different language sources leads to less entities. Comparing the number of articles in English Wikipedia and those in Chinese Wikipedia, which are 5 million and 800 thousand separately, it's obvious that to structure a knowledge base in Chinese with Wikipedia is more challenging. (2) The number of existing cross-lingual links in Wikipedia accounts for a low proportion, which affects the quality of a bilingual knowledge base. Especially there is no evident links in properties. Statistically, only XX thousand cross-lingual links can be found between English and Chinese articles. (3) The large but not rigorous category system in Wikipedia causes incorrect semantic relations in taxonomy. For example,\textcolor{red}{example}
+A cross-lingual knowledge base can effectively promote global knowledge sharing, understanding and expanding. However, to build an available knowledge base, some problems must be addressed: (1) The imbalanced size of different language sources leads to less entities. Comparing the number of articles in English Wikipedia with those in Chinese Wikipedia, which are 5 million and 800 thousand separately, it's obvious that to structure a knowledge base in Chinese with Wikipedia is more challenging. (2) The number of existing cross-lingual links in Wikipedia accounts for a low proportion, which effects the quality of a bilingual knowledge base. Especially when there scarcely exists evident links in properties. Statistically, only XX thousand cross-lingual links can be found between English and Chinese articles. (3) The large but not rigorous category system in Wikipedia causes incorrect semantic relations in taxonomy. For example,\textcolor{red}{example}
 
 %In Semantic Web, a large-scale multilingual knowledge base can help …
 
 %Thus it’s significant to build a Chinese-English knowledge base and benefit from it.
 
-Currently, there are several massive knowledge encyclopedias in Chinese, including Hudong Baike and Baidu Baike. To solve the imbalance problem, we utilize such separated sources to enrich our Chinese information. In this paper, we propose an approach to combine four resources, which are English Wikipedia, Chinese Wikipedia, Hudong Baike and Baidu Baike, into one cross-lingual knowledge base, which contains XXX concepts, XXX instances and XXX properties. To get a more available result, we also make judgement on the relation among concepts and instances. At last, a query interface is provided to access the knowledge base. Specifically, our work makes the following contributions:
+Currently, there are several massive knowledge encyclopedias in Chinese, including Hudong Baike and Baidu Baike. To solve the imbalance problem, we utilize such separated sources to enrich our Chinese information. In this paper, we propose an approach to integrate four resources, which are English Wikipedia, Chinese Wikipedia, Hudong Baike and Baidu Baike, into one cross-lingual knowledge base, which contains XXX concepts, XXX instances and XXX properties. To get a more available result, we also make judgement on the relations among concepts and instances. At last, a SPARQL query interface is provided to access to the knowledge base. Specifically, our work makes the following contributions:
 \begin{itemize}
-  \item We propose a method to build a Chinese-English cross-lingual knowledge base combining multi-encyclopedias. Among them, two  Chinese encyclopedias are utilized to helps balance and enrich information of two languages.
-  \item We extend the cross-lingual link set by employing a cross-lingual knowledge linking discovery approach for concept and instance, and analysing templates in Wikipedia for property.
-  \item We prune the original taxonomy, which is extracted from encyclopedia category system, to retrieve more precise subClassOf and instanceOf relation in ontology.
+  \item We propose a method to build a Chinese-English cross-lingual knowledge base combining multi-encyclopedias. Among them, two  Chinese encyclopedias are utilized to help balance and enrich information in two languages.
+  \item We extend the cross-lingual link set by employing a cross-lingual knowledge linking discovery approach for concept and instance, and analyzing templates in Wikipedia for property.
+  \item We prune the original taxonomy, which is extracted from encyclopedia category system, to retrieve more precise subClassOf and instanceOf relations in ontology.
   \item A website is developed based on our ontology and also a SPARQL interface is provided for public query operations in our knowledge base.
 \end{itemize}
 
@@ -71,16 +71,16 @@ In this section, we firstly introduce the four encyclopedias used to build and e
 \subsection{Encyclopedias}
 \label{sec:encyclopedias}
 \subsubsection{Wikipedia}
-Nowadays, Wikipedia is the largest data store of human knowledge. It was launched in 2001 and has hold over 35 million articles in 288 language by 2015. Out of these, English articles contribute most. There are 4.8 million articles in English while only over 800thousand articles in Chinese. It is obvious that the quantity of English articles is far more than Chinese. Such imbalance makes those ontologies based on Wikipedia-only behave badly in cross-lingual aspect. For example, DBpedia has 683 concepts in English while only 11 Chinese concepts, that helps little when other people want to do cross-lingual research depending on DBpedia. To avoid the imbalance problem, two other Chinese encyclopedias are utilized to extend Chinese source.
+Nowadays, Wikipedia is the largest data store of human knowledge. It was launched in 2001 and has hold over 35 million articles in 288 language by 2015. Out of these, English articles contribute most. There are 4.8 million articles in English while only over 800 thousand articles in Chinese. It is obvious that the quantity of English articles is far more than Chinese. Such imbalance makes those ontologies based on Wikipedia-only behave badly in cross-lingual aspect. For example, DBpedia has 683 concepts in English while only 11 Chinese concepts, that shows little help when trying to do cross-lingual research depending on DBpedia. To avoid this imbalance problem, two other Chinese encyclopedias are utilized to enrich Chinese source.
 
-Articles in Wikipedia are manually edited by various authors. Wikipedia provides many templates to guide authors composing their context in a standard way, so do infoboxes. For example, The infobox in film 星际穿越(Interstellar) use the Template \emph{Infobox film}. Infobox template maintains a property set of similar articles and display labels on webpage.
+Articles in Wikipedia are manually edited by various authors. To avoid distinct formats and styles, Wikipedia provides templates to format their editing content, especially infoboxes. For example, The infobox in film 星际穿越(Interstellar) is edited according to the Template \emph{Infobox film}, which maintains a property set of film articles.
 
 \subsubsection{Other Chinese Encyclopedias}
-There are several large-scale monolingual Chinese Encyclopedias currently. Among those, Baidu Baike and Hudong Baike are the most well-known. Hudong Baike was founded in 2005 and contains more than 12 millions articles with about 9 millions experts' contribution until 2015. At the mean time, Baidu Baike maintains more than 11 millions articles. These two resources are similar in article structure, sometimes even in content.
+There are several large-scale monolingual Chinese Encyclopedias currently. Among those, Baidu Baike and Hudong Baike are the most content-rich. Hudong Baike was founded in 2005 and contains more than 12 million articles with about 9 million experts' contribution until 2015. At the mean time, Baidu Baike maintains more than 11 million articles. These two resources are similar in article structure, even in content in some cases.
 
 \subsubsection{Encyclopedia Page}
 \label{sec:ep}
-All these four encyclopedias have two important elements, articles and category taxonomy. A taxonomy presents the relation between categories. Usually a category has its sub-categories and super-categories. Fig.\ref{fig:hudong-taxonomy} shows a screenshot of Hudong Taxonomy. Besides, an article belongs to one or more categories. An article describes an entity with rich information created and modified by several verified editors. The content and relation of an article provide a lot when building a cross-domain knowledge base. In general, there are five elements can be exploited:
+All these four encyclopedias provide two important elements which contain potential semantic information, category taxonomy and articles. A taxonomy presents the relations between categories. Usually a category has its sub-categories and super-categories. Fig.\ref{fig:hudong-taxonomy} shows a screenshot of Hudong Taxonomy. An article describes an entity with rich information created and modified by several verified editors. Besides, an article may belong to one or more categories. The article content as well as the relation between an article and its belonged categories both help enormously when constructing a knowledge base. In general, there are five elements can be exploited in each article page:
 \begin{figure}
     \centering
     \begin{minipage}[t]{0.8\textwidth}
@@ -90,7 +90,7 @@ All these four encyclopedias have two important elements, articles and category 
     \end{minipage}%
 \end{figure}
 \begin{itemize}
-  \item Title: A Title is the label of entity, which is unique to an article so that it can be used to distinguish entities.
+  \item Title: A Title is the label of an entity, which is unique to each article so that it can be used to distinguish entities.
   \item Abstract: An abstract is a brief summarize of the entity. It's always the first paragraph of an article. Usually it can be taken as an important feature due to the summary content.
   \item Infobox: Most of articles contain infobox. An infobox maintains structured data which are frequently subject-attribute-value triples formalized as a table. Information in this table includes important properties of an entity.
   \item Links: Links are entries to other articles within the encyclopedia. They lead readers to reference articles. Actually, they represent the relations between the current article and other articles.
@@ -104,7 +104,7 @@ Fig. \ref{fig:interstellar} shows a snap of an article in Chinese Wikipedia.
 \end{figure}%
 
 \subsection{Cross-lingual Links}
-In order to build a cross-lingual knowledge base, we need the relation between Chinese source and English source, which helps merge different language information into their common entities. In Wikipedia, most articles have language links which guide the reader to the article in specific language under the same entity. Fig. \ref{fig:interstellar}shows language links of \emph{Interstellar} is on the right of Wikipedia page. Taking advantage of human established language links, we can generate an initial cross-lingual ontology based on Chinese and English Wikipedia, similar to DBpedia. Afterwards, to combine Hudong Baike and Baidu Baike, which are lack of cross-lingual information but rich in Chinese data, we employ the approach proposed in \cite{wang2012cross} to discover cross-lingual links between English Wikipedia and Baidu Baike.
+In order to build a cross-lingual knowledge base, we need the mapping relation between Chinese sources and English sources, which can be used to fuze information in different language. In Wikipedia, some article pages have language links so that the reader can switch languages within the same article. Fig. \ref{fig:interstellar}shows language links of \emph{Interstellar} on the right column of the Wikipedia page. Taking advantage of manually established language links, we can generate an initial cross-lingual ontology based on Chinese and English Wikipedia, similar to DBpedia. Afterwards, to combine Hudong Baike and Baidu Baike, which are lack of cross-lingual information but rich in Chinese data, we employ the approach proposed in \cite{wang2012cross} to discover cross-lingual links between English Wikipedia and Baidu Baike.
 
 \subsection{Definitions}
 \label{sec:definition}
@@ -116,9 +116,9 @@ Here we list definitions involved in the later sections:
 \begin{equation}
     a = <Ti(a),AB(a),Li(a),I(a),C(a)>
 \end{equation}
-where $Ti(a),AB(a),Li(a),I(a),C(a)$ denotes title, abstract, links, infobox, category tag of article $a$.
+where $Ti(a),AB(a),Li(a),I(a),C(a)$ denotes title, abstract, links, infobox, category tags of article $a$.
 
-\textbf{Definition 3:} To an article $a$ containing multi-language content in Wikipedia, $L_{e}$ and $L_{z}$ denotes its article tags, usually titles, in English and Chinese. Thus $cl(a) = <L_{e}(a), L_{z}(a)>$
+\textbf{Definition 3:} As to an article $a$ containing multi-language content in Wikipedia, $L_{e}$ and $L_{z}$ denotes its article tags, usually titles, in English and Chinese separately. Thus $cl(a) = <L_{e}(a), L_{z}(a)>$
 
 \textbf{Definition 4:} An Infobox $I(a)$ in an article contains a set of attribute-value pairs {$p_{1}$, $p_{2}$,...}. In Wikipedia, an infobox is usually edited based on an appropriate infobox template recommended by Wikipedia, which here we denote as $T(a)$. Templates specify certain attributes, which are usually different from those displayed on the web page. Thus, we define an attribute-value pair as a triple $p=<tl,dl,v>$, where $tl$ is attribute label in template, $dl$ is displayed label in web page and $v$ is the corresponding value.
 
@@ -129,11 +129,11 @@ Fig. \ref{fig:procedure} presents the whole procedure of our knowledge base buil
     \label{fig:procedure}
     \caption{Procedure of building our cross-lingual knowledge base}
 \end{figure}%
-We extract information from four source, Baidu Baike, Hudong Baike, Chinese Wikipedia and English Wikipedia. Because the different data format of each source, that is, html code page of Baidu and Hudong with different layout, and XML format of Wikipedia dump file, various extractors should be applied. After file parsing, we receive four datasets with concept lists, instance lists, property lists and their relations of each source. Meanwhile, an initial Chinese-English lan-link set is generated, which is then employed a link-discovery method to become a larger set. Using the extended language links, we combine the four datasets into one. At last, going through the step of taxonomy pruning and data-cleaning, we get a final knowledge base which higher accuracy.
+We extract information from four sources, Baidu Baike, Hudong Baike, Chinese Wikipedia and English Wikipedia. Considering the different data format of each source, that is, html code page of Baidu and Hudong with different layout, and XML format of Wikipedia dump file, various extractors should be employed. After data parsing, we receive four datasets with concept lists, instance lists, property lists and their relations of each source. Meanwhile, an initial Chinese-English lan-link map is generated, which is then employed a link-discovery method to obtain a larger one. Using the extended language links, we combine the four datasets into one. At last, going through the procedure of taxonomy pruning and data-cleaning, we get a final knowledge base with higher accuracy.
 
 \section{Data Preprocessing}
 \label{sec:dp}
-We prepare data for the knowledge base by a series of preprocessing operations. During this stage, our goal is to get a structured dataset includes concepts, which are extracted from category taxonomy; instances, which are defined according to articles and properties, which are based on infobox and also templates assistant. We will describe the extraction approach in detail.
+We prepare data for the knowledge base by a series of preprocessing operations. During this stage, our goal is to get a structured dataset including concepts, which are extracted from category taxonomy; instances, which are defined according to articles and properties based on both infobox and templates assistant. We will describe the extraction approach in detail below.
 
 \subsection{Concept Extraction}
 \label{sec:ce}
@@ -147,20 +147,20 @@ However, the whole taxonomy can not directly transform from category system beca
     \item Some sub-category links in the category system maybe inconsistent. Some categories may contain itself as sub-category, or contain sub-category that also be the super-category of it. As Fig. \ref{fig:category-mistakes} shows: In Hudong, the sub-category of 国家元首(Head of State) contains itself as a child, which causes a circle in taxonomy tree. Meanwhile, in Wikipedia, \textcolor{red}{例子}
     \item Some categories relate to only one or two articles. According to the definition of concept, such categories are less representative to a group of instances, therefore it's unwise to retain it as concept.
 \end{itemize}
-   To receive a cleaner and preciser concept taxonomy, we firstly do some refining works as follow:
+   To receive a cleaner and more precise concept taxonomy, we firstly do some refining works as follow:
 \begin{itemize}
     \item Delete list categories or template categories in Wikipedia.
     \item Delete inconsistent sub-categories and keep the super one.
     \item Delete categories that relate to less than two articles.
 \end{itemize}
-The cleaning works are carried out in all encyclopedias are consistency when extracting. The remaining categories comprise an original concept taxonomy. A category and its sub-categories are correlated by the relation \emph{SubClassOf}, and a category and its articles are correlated by the relation \emph{InstanceOf}. However, there are still incorrect samples in the two relations. For example, \emph{Tsinghua University} is not an entity of \emph{Haidian District}, but relates to. Thus we will prune the taxonomy later.
+The cleaning work carried out in all encyclopedias are consistency when extracting. The remaining categories comprise an original concept taxonomy. A category and its sub-categories are correlated by the relation \emph{SubClassOf}, and a category and its articles are correlated by the relation \emph{InstanceOf}. However, there are still incorrect samples in the two relations. For example, \emph{Tsinghua University} is not an entity of \emph{Haidian District}, but relates to. Thus we will prune the taxonomy later.
 
 \subsection{Property Extraction}
 \label{sec:pe}
-A property is defined as an attribute of entity. It represents the relation between two instances or an instance and its value. We divided properties into two types: object property, whose value is an individual, such as \emph{directed by}; datatype property, whose value is a text literal, such as \emph{birth date}. Considering both content and infobox of an article, we extract two groups of properties, general-properties and Infobox-properties.
+A property is defined as an attribute of an entity. It represents the relation between two instances or an instance and its value. We divided properties into two types: object property, whose value is an individual, such as \emph{directed by}; datatype property, whose value is a literal text, such as \emph{birth date}. Considering both content and infobox of an article, we extract two kinds of properties, general-properties and Infobox-properties.
 
 \subsubsection{General-properties}
-Characteristics of an entity are seen as general-properties, including label, abstract, and url. Those properties describe specific information of an entity. The label property identifies a unique entity, whose value is article title. The abstract property provides a brief description of an entity, whose value is the first paragraph of article. The url property saves the resource of an entity, which is actually a url in each source. All of them are datatype properties.
+Characteristics of an entity are seen as general-properties, including label, abstract, and url. Those properties describe specific information of an entity. The label property identifies a unique entity, whose value is the article title. The abstract property provides a brief description of an entity, whose value is the first paragraph of article. The url property saves the source of an entity, which is actually a url in each source. All of them are datatype properties.
 
 \subsubsection{Infobox-properties}
 Attributes acquired from infobox are considered as Infobox-properties, such as 上映时间(release date), 导演(directed by) in a movie's infobox. All attributes relate with a typical value in the infobox. The value maybe a text or a reference to another entity. The type of a property, datatype or object, depends on the value. Ordinarily, a plain text value marks the property as datatype while an entity reference determines the property as object. For example, the attribute 上映时间(release date) can be defined as a datatype property as its value is a datetime string. Meanwhile, 导演(directed by) can be an object property because its value points to a person who directed the movie.
