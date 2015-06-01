@@ -335,55 +335,5 @@ This paper presents a procedure of building a Chinese-English cross-lingual know
 \bibliographystyle{splncs03}
 \bibliography{paper}
 
-\begin{algorithm}[t]
-    \KwIn{ English Infobox template set $TS_{e}$, Chinese Infobox template set $TS_{z}$, English article set $AS_{e}$, Chinese article set $AS_{z}$, existing lan-link map $CL<L_{e}, L_{z}>$ }
-\KwOut{Property lan-link map $CL_{p}$}
-
-Initialization: $CL_{p} = \{\} $\\
-\ForEach {English Template $T_{e} \in TS_{e}$}{
-    $L_{e}$ = label of $T{e}$ \\
-    \eIf {$L_{e} \in CL$}{
-        $L_{z} = CL\left[L_{e}\right] $ ,\ $T_{z} = TS_{z}\left[L_{z}\right]$\\
-        \ForEach{$tl \in T_{e}.pset.tlset \cap T_{z}.pset.tlset $}{
-            $CL_{p}$.add(<$T_{e}.p[tl].dl$, $T_{z}.p[tl].dl$>)
-        }
-    }
-}
-
-\ForEach {English Article $A_{e}$ \in $AS_{e}$}{
-    $L_{e}$ = label of $A_{e}$
-    \eIf {$L_{e} \in CL$}{
-        $L_{z} = CL\left[L_{e}\right]$ ,\ $A_{z} = AS_{z}\left[L_{z}\right]$ \\
-
-        $T_{e}$ = Template of $A_{e}$.I ,\ $T_{z}$ = Template of $A_{z}$.I \\
-
-        Set $Cset$ as the Common set of template labels of $T_{e}$ and template labels of $T_{z}$ \\
-        $Cset = T_{e}.pset.tlset \cap T_{z}.pset.tlset $ \\
-
-        \ForEach {template label $tl \in Cset $}{
-            $CL_{p}$.add(<$T_{e}.pset[tl].dl$, $T_{z}.pset[tl].dl$>)
-        }
-
-        \ForEach{English template label $tl_{e} \in T_{e}.pset.tlset \minus Cset$}{
-            $p_{e} = T_{e}.pset\left[tl_{e}\right]$ \\
-            \ForEach{Chinese template label $tl_{z} \in T_{z}.pset.tlset - Cset$}{
-                $p_{z} = T_{z}.pset\left[tl_{z}\right]$ \\
-                \eIf {$p_{e}.type$ is datatype $\&\&$ $p_{z}.type$ is datatype}{
-                    \eIf {CalculateSimilar($p_{e}.v$, $p_{z}.v$) > $threshold$}{
-                        $CL_{p}$.add(<$p_{e}.dl$, $p_{z}.dl$>)
-                    }
-                } \eElseIf {$p_{e}.type$ is object $\&\&$ $p_{z}.type$ is object}{
-                    \eIf{ReferToCommmonEntity($p_{e}.v$, $p_{z}.v$)}{
-                        $CL_{p}$.add(<$p_{e}.dl$, $p_{z}.dl$>)
-                    }
-                }
-            }
-        }
-    }
-}
-\caption{Property Links Extraction}
-\label{alg:ple}
-\end{algorithm}
-
 \end{document}
 
