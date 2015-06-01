@@ -120,20 +120,19 @@ The topic described by $a$ is defined as Entity$e$. Ariticles from different sou
 
 \textbf{Definition 3:} An Infobox $In(a)$ in an article contains a set of attribute-value pairs {$p_{1}$, $p_{2}$,...}. In Wikipedia, an infobox is usually edited based on an appropriate infobox template recommended by Wikipedia, which here we denote as $T(a)$. Templates specify certain attributes, which are usually different from those displayed on the webpage. Thus, we define an attribute-value pair as a triple $p=<tl,dl,v>$, where $tl$ is attribute label in template, $dl$ is displayed label in web page and $v$ is the corresponding value.
 
-\textbf{Definition 4:} An ontology is a formal specification of a group of entitie. An ontology can be described as a 6-tuple:
+\textbf{Definition 4:} An ontology is a formal specification of a group of entitie. In our work, an ontology is described as a 6-tuple:
 \begin{equation}
     O = <C,I,P,H^C,H^I,H^P>
 \end{equation}
 where $C$, $I$, $P$ are the sets of concepts, instances, and properties, respectively. $H^C$, $H^I$, $H^P$ represents the hierarchical relationships of concept-concept, concept-instance, instance-property. A Taxonomy$T$ is comprised by $H^C$ and $H^I$, which seperately repesent \emph{SubClassOf} and \emph{InstanceOf} relations.
 
-\textbf{Definition 5:} Given several ontologies generated from various sources, a cross-lingual knowledge base combines them into one. Thus a knowledge base can be defined as 
+\subsection{Cross-lingual Knowledge Base Building}
+A cross-lingual knowledge base is a database conform to a cross-lingual ontology. Taking advantage of language links in $CL$, several mono-ontologies generated from various sources can be merge into one cross-lingual ontology.  Thus a knowledge base can be defined as:
 \begin{equation}
     KB = <O_{i}, CL>
 \end{equation}
-where O denotes ontologies, CL represents the cross-lingual link set.
-
-\section{Proposed Framework}
-Fig. \ref{fig:procedure} presents the whole procedure of our knowledge base building.
+where $O_{i}$ denotes the ith mono-ontology, CL represents the cross-lingual link set.
+We build the cross-lingual ontology according to the procedure in Fig. \ref{fig:procedure}
 \begin{figure}[ht]
     \centerline{\includegraphics[width=1\columnwidth]{fig/procedure}}
     \label{fig:procedure}
@@ -190,11 +189,11 @@ To solve the problems above, we take advantage of template information. Specific
 
 \subsection{Instance Extraction}
 \label{sec:ie}
-In encyclopedia, an article describes an unique entity in the world. Therefore we can extract an article content as an instance. During the extraction, llustrative or structure-related articles in Wikipedia are deleted, including category list pages and template documentations.
+In encyclopedia, an article describes an unique entity in the world. Therefore we can extract an article content as an instance. During the extraction, illustrative or structure-related articles in Wikipedia are deleted, including category list pages and template documentations.
 
-Each instance contains relations with concepts and properties. Take the movie 星际穿越(Interstellar) in Fig.\ref{fig:interstellar} as an example, concepts are assigned according to the category tags below the article page. 美国科幻片(American science fiction films) is a concept of Interstellar. In the meantime, we obtain label property from the article title and abstract property from the first paragraph. Infobox-properties are also acquired via extracting from the infobox in the article. Besides, according to links in the content, we gain the reference $Li(a)$ between the current instance and others, such as 华纳兄弟(Warner Bros.).
+Each instance contains relations with concepts and properties. Take the movie 星际穿越(Interstellar) in Fig.\ref{fig:interstellar} as an example, concepts are assigned according to the category tags below the article page. 美国科幻片(American science fiction films) is a concept of Interstellar. In the meantime, we obtain label property from the article title and abstract property from the first paragraph. Infobox-properties are acquired via extracting from the infobox in the article. Besides, according to links in the content, we gain the reference $Li(a)$ between the current instance and others, such as 华纳兄弟(Warner Bros.).
 
-After the preprocessing above, we harvest two types of information. One is the characteristics of instance, including $Ti(a)$, $Ab(a)$ of article$a$. The other includes relationships, containing $H^I$ and $H^P$ associate with article$a$.
+After the preprocessing above, we harvest two types of information. One is the characteristics of instance, including $Ti(a)$, $Ab(a)$ of article$a$. The other includes relationships, containing $H^I$ and $H^P$ associated with article $a$.
 
 \section{Cross-lingual Integration}
 \label{sec:clkbb}
