@@ -88,8 +88,8 @@ Articles from the four sources are similar in structure. Usually they provide tw
     \centering
     \begin{minipage}[t]{0.8\textwidth}
         \centerline{\includegraphics[width=0.8\columnwidth]{fig/hudong-taxonomy2}}
-        \label{fig:hudong-taxonomy}
         \caption{Taxonomy in Hudong}
+        \label{fig:hudong-taxonomy}
     \end{minipage}%
 \end{figure}
 \begin{itemize}
@@ -99,11 +99,12 @@ Articles from the four sources are similar in structure. Usually they provide tw
   \item Links: Links are entries to other articles within the encyclopedia. They lead readers to reference articles. Actually, they represent the relations between the current article and other articles.
   \item Category: The categories that an article belongs to are usually listed at the bottom of article page, shown as tags. An article belongs to one or more categories.
 \end{itemize}
+
 Fig. \ref{fig:interstellar} shows a snap of an article in Chinese Wikipedia.
 \begin{figure}[ht]
     \centerline{\includegraphics[width=1\columnwidth]{fig/interstellar}}
-    \label{fig:interstellar}
     \caption{A snap of Interstellar(Film) article in Chinese Wikipedia}
+    \label{fig:interstellar}
 \end{figure}%
 
 Notably, articles in Wikipedia follow templates specified by Wikipedia when being editted. A template defines items that a group of article should fill. Besides, infoboxes are generated based on templates too. For example, The infobox in film 星际穿越(Interstellar) is edited according to the Template \emph{Infobox film}, which maintains a property set of films.
@@ -143,8 +144,8 @@ where $O_{i}$ denotes the ith mono-ontology, CL represents the cross-lingual lin
 We build the cross-lingual ontology according to the procedure in Fig. \ref{fig:procedure}
 \begin{figure}[ht]
     \centerline{\includegraphics[width=1\columnwidth]{fig/procedure}}
-    \label{fig:procedure}
     \caption{Procedure of building our cross-lingual knowledge base}
+    \label{fig:procedure}
 \end{figure}%
 We extract information from four sources, Baidu Baike, Hudong Baike, Chinese Wikipedia and English Wikipedia. Considering the different data format of each source, that is, html code page of Baidu and Hudong with different layout, and XML format of Wikipedia dump file, various extractors should be employed. After data parsing, we get four datasets with concept lists, instance lists, property lists and their relations of each source. Meanwhile, an initial Chinese-English language-link set is generated, which will be increased by employing a link-discovery method to obtain a larger one. Using the extended language links, we combine the four datasets into one. At last, going through the procedure of taxonomy pruning and data-cleaning, we get a final knowledge base with higher accuracy.
 
@@ -187,8 +188,8 @@ We are challenged when extracting properties from infoboxes:
     \item In Wikipedia, the attribute label displayed in the webpage infobox is inconsistent with it in the published dump file. Fig.\ref{fig:infobox-template} gives a mapping result of display label and dump label in \emph{Interstellar}' infobox. The left is infobox, the middle is a snap from dump file in Wikipedia. As we've seen, attribute label in infobox is different from it in dump file. As a result we have to explore the display labels in Wikipedia rather than dump labels extracted from data file. 
     \begin{figure}[ht]
         \centerline{\includegraphics[width=1\columnwidth]{fig/infobox-template}}
-        \label{fig:infobox-template}
         \caption{Comparison of display label and dump label in \emph{Interstellar} infobox}
+        \label{fig:infobox-template}
     \end{figure}%
 \item There are special characters in labels. Wikipedia usually use hyphen "-" or dot "•" to mark sublabels. For example, \emph{population} property has sub-properties "-Density" and "-Urban". In addition, odd signs, such as colon or asterisk, may occur in Baidu or Hudong property labels by mistake.
 \end{itemize}
@@ -297,21 +298,21 @@ Our knowledge graph is organized in Openlink Virtuoso, which is a data managemen
 We provide a website to present an intuitive graph of our knowledge in the forms of class, instance and property. Fig.\ref{fig:xlore} shows sample pages of the integrated data. The users of our system can choose language preference which is convenient for both English speaker and Chinese speaker. In the class webpage, we exhibit the label, super classes, subclasses, related topics, properties and instances of the specific class in bilingual way on condition that the corresponding English entries or Chinese entries exist.  In the instance webpage we display bilingual label, super classes, related classes, abstract, property key value pairs, images and references. In the property webpage, we presents bilingual label, domains, ranges, and related instances of each property. 
 \begin{figure}[ht]
     \centerline{\includegraphics[width=1\columnwidth]{fig/xlore}}
-    \label{fig:xlore}
     \caption{Sample Pages of Class, Instance and Property}
+    \label{fig:xlore}
 \end{figure}%
 Beside these user-friendly pages, we provide two ways to access our knowledge base: via the search engine shown in Fig.\ref{fig:search-engine}, or via SPARQL endpoint shown in Fig.\ref{fig:sparql-endpoint}. For users who know little about semantic web, they can query by inputing related text into searchbox and search to get entities with similar label. To present practicable result, An index is generated over all entities. We as well provide SPARQL interface for professional users to query our knowledge graph. Users can choose the language tags of their desired results by \textbf{"filter(langMatches(?label),"en"))"} or \textbf{"filter(langMatches (?label),"zh"))"}.
 %\begin{figure}
 %    \centering
 %    \begin{minipage}[t]{0.8\textwidth}
 %        \centerline{\includegraphics[width=0.8\columnwidth]{fig/search-engine}}
-%        \label{fig:search-engine}
 %        \caption{A Sample Query for Using Search Box }
+%        \label{fig:search-engine}
 %    \end{minipage}%
 %    \begin{minipage}[t]{0.8\textwidth}
 %        \centerline{\includegraphics[width=0.8\columnwidth]{fig/sparql-endpoint}}
-%        \label{fig:sparql-endpoint}
 %        \caption{A SPARQL Sample Query over the Knowledge Base}
+%        \label{fig:sparql-endpoint}
 %    \end{minipage}%
 %\end{figure}
 

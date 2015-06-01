@@ -4,4 +4,21 @@ houlei/
 *.blg
 *.log
 *.pdf
+nlpcc/*.bbl
+nlpcc/*.aux
+nlpcc/*.blg
+nlpcc/*.log
+nlpcc/*.pdf
 
+
+nlpcc/paper.aux
+
+nlpcc/paper.bbl
+
+nlpcc/paper.blg
+
+*.log
+
+nlpcc/paper.pdf
+
+nlpcc/paper.aux
