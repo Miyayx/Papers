@@ -1,1 +1,7 @@
 houlei/
+*.bbl
+*.aux
+*.blg
+*.log
+*.pdf
+
