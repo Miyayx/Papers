@@ -47,13 +47,13 @@ Tsinghua University, Beijing 100084, China\\
 \maketitle
 
 \begin{abstract}
-Cross-lingual Knowledge Bases are important for global knowledge sharing. However, there are few Chinese-English knowledge bases due to the following reasons: 1) the scarcity of Chinese knowledge; 2) the number of current cross-lingual language links is limited; 3) the incorrect relation in semantic taxonomy. In this paper, a large-scale cross-lingual knowledge base(CLKB) is build to solve the above problems. The CLKB is based on English and Chinese Wikipedia as well as Baidu Baike and Hudong Baike. An extension method is used to increase language links while a pruning approach is used to refine taxonomy. Totally, there are XXX concepts, XXX instances, XXX properties referred in the CLKB. Moreover, the paper provides visualization webpages of knowledge and a SPARQL endpoint accessing to the established CLKB.  
+Cross-lingual Knowledge Bases are important for global knowledge sharing. However, there are few Chinese-English knowledge bases due to the following reasons: 1) the scarcity of Chinese knowledge; 2) the number of current cross-lingual language links is limited; 3) the incorrect relation in semantic taxonomy. In this paper, a large-scale cross-lingual knowledge base(CLKB) is build to solve the above problems. The CLKB is based on English and Chinese Wikipedia as well as Baidu Baike and Hudong Baike. An extension method is used to increase language links while a pruning approach is used to refine taxonomy. Totally, there are XXX concepts, XXX instances, XXX properties referred in the CLKB. Moreover, the paper provides visualization webpages of knowledge and a SPARQL endpoint accessing to the established CLKB.
 
 \keywords{Knowledge Base, Semantic Web, Ontology, Cross-lingual}
 \end{abstract}
 
 \section{Introduction}
-With Linked Open Data(LOD) developing recent years, an increasing number of knowledge bases are generated for information sharing. Large-scale knowledge bases in LOD project, such as DBpedia\cite{mendes2012dbpedia}, YAGO\cite{mahdisoltani2014yago3} and Freebase\cite{bollacker2008freebase} are often used for information extraction\cite{dutta2013integrating}, entity linking\cite{shen2012linden}, recommendation\cite{passant2010dbrec,fernandez2011generic,kaminskas2012knowledge} and many other applications. These knowledge bases are not only cross-domain but also multilingual, which is benefit for global knowledge sharing.  
+With Linked Open Data(LOD) developing recent years, an increasing number of knowledge bases are generated for information sharing. Large-scale knowledge bases in LOD project, such as DBpedia\cite{mendes2012dbpedia}, YAGO\cite{mahdisoltani2014yago3} and Freebase\cite{bollacker2008freebase} are often used for information extraction\cite{dutta2013integrating}, entity linking\cite{shen2012linden}, recommendation\cite{passant2010dbrec,fernandez2011generic,kaminskas2012knowledge} and many other applications. These knowledge bases are not only cross-domain but also multilingual, which is benefit for global knowledge sharing.
 
 DBpedia, the nucleus of LOD, extracts structured information from Wikipedia and contains approximately 38.3 million things. Now DBpedia provides 124 versions of non-English language including Chinese. However, there are only XXX instances and 11 classes in Chinese. Compared with the 4.58 million things in English, the quantity of Chinese information is obviously insufficient for further research and application.
 
@@ -82,7 +82,7 @@ In this section, we firstly introduce the encyclopedias used to build and enrich
 \subsubsection{Wikipedia}
 Nowadays, Wikipedia is the largest data store of human knowledge. It was launched in 2001 and has hold over 35 million articles in 288 languages by 2015. Out of these, English articles contribute most. The imbalance of different language articles makes ontologies based on Wikipedia-only behave badly in cross-lingual. Thus, more Chinese encyclopedias are necessary to enrich Chinese source.
 
-Among the large-scale monolingual Chinese encyclopedias currently, Baidu Baike and Hudong Baike are the most content-rich. Hudong Baike was founded in 2005 and contains more than 12 million articles with about 9 million experts' contribution until 2015. Meanwhile, Baidu Baike maintains more than 11 million articles. 
+Among the large-scale monolingual Chinese encyclopedias currently, Baidu Baike and Hudong Baike are the most content-rich. Hudong Baike was founded in 2005 and contains more than 12 million articles with about 9 million experts' contribution until 2015. Meanwhile, Baidu Baike maintains more than 11 million articles.
 
 Here, we consider an encyclopedia wiki as a collection of articles, category system, which can be defined as: $W = <A,C>$, where A denotes articles, C denotes categories in W.
 
@@ -98,7 +98,7 @@ Articles from the four sources are similar in structure. Usually they provide tw
 \end{figure}
 \begin{itemize}
   \item Title: A Title is the label of an entity, which is unique so that it can be used to distinguish entities.
-  \item Abstract: An abstract is a brief summary of the entity. It's always the first paragraph of an article. 
+  \item Abstract: An abstract is a brief summary of the entity. It's always the first paragraph of an article.
   \item Infobox: Most of articles contain infobox. An infobox maintains structured data which are subject-attribute-value triples formalized as a table. Information in this table includes important properties of an entity.
   \item Links: Links are entries to other articles within the encyclopedia. They lead readers to reference articles. Actually, they represent the relations between the current article and other articles.
   \item Category: The categories that an article belongs to are usually listed at the bottom of article page, shown as tags. An article belongs to one or more categories.
@@ -137,7 +137,7 @@ A cross-lingual knowledge base is a database conform to a cross-lingual ontology
 where $O_{i}$ denotes the ith monolingual-ontology, $CL$ represents the cross-lingual link set.
 
 \subsection{Cross-lingual Knowledge Base Building}
-In this paper, our task is to build an Cross-lingual Knowledge Base(CLKB) assembling knowledge from several English or Chinese encyclopedia sources. Given four encyclopedia datasets $W_{1},W_{2},W_{3},W_{4}$, we get $O_{i}$ including concept list $C_{i}$, instance list $I_{i}$, property list $P_{i}$, taxonomy $H^C_{i}$ of each dataset $W_{i}$ by extracting. We then enrich the extracted language-link set $CL$ using an link-discovery extension method. We also refining taxonomy by checking if an \textit{articleOf} or \textit{subCategoryOf} is really an \textit{instanceOf} or \textit{subClassOf} relationship. Our final output is an English-Chinese ontology  with SPARQL endpoint though process of combine $O_{i}$ by utilizing language links in $CL$. 
+In this paper, our task is to build an Cross-lingual Knowledge Base(CLKB) assembling knowledge from several English or Chinese encyclopedia sources. Given four encyclopedia datasets $W_{1},W_{2},W_{3},W_{4}$, we get $O_{i}$ including concept list $C_{i}$, instance list $I_{i}$, property list $P_{i}$, taxonomy $H^C_{i}$ of each dataset $W_{i}$ by extracting. We then enrich the extracted language-link set $CL$ using an link-discovery extension method. We also refining taxonomy by checking if an \textit{articleOf} or \textit{subCategoryOf} is really an \textit{instanceOf} or \textit{subClassOf} relationship. Our final output is an English-Chinese ontology  with SPARQL endpoint though process of combine $O_{i}$ by utilizing language links in $CL$.
 
 The whole building procedure is shown in Fig. \ref{fig:procedure}
 \begin{figure}[ht]
@@ -161,7 +161,7 @@ However, the whole taxonomy can not directly transform from category system beca
     %s\item Some sub-category links in the category system maybe inconsistent. Some categories may contain itself as sub-category, or contain sub-category that also be the super-category of it. As Fig. \ref{fig:category-mistakes} shows: In Hudong, the sub-category of 国家元首(Head of State) contains itself as a child, which causes a circle in taxonomy tree. Meanwhile, in Wikipedia, \textcolor{red}{例子}
     \item Some categories relate to only one or two articles. According to the definition of concept, such categories are less representative to a group of instances, therefore it's unwise to retain it as concept.
 \end{itemize}
-   To obtain a more precise concept taxonomy,first remove such categories in all encyclopedias, and build the original concept hierarchy $H^C$ using the remaining categories.  
+   To obtain a more precise concept taxonomy,first remove such categories in all encyclopedias, and build the original concept hierarchy $H^C$ using the remaining categories.
 However, among the relations there are still incorrect samples. For example, \emph{Tsinghua University} is not an entity of \emph{Haidian District}, but relates to. Thus we will prune the taxonomy later.
 
 \subsection{Property Extraction}
@@ -176,7 +176,7 @@ Attributes acquired from infobox are considered as Infobox-properties, such as �
 
 We are challenged when extracting properties from infoboxes:
 \begin{itemize}
-    \item In Wikipedia, the attribute label displayed in the webpage infobox is inconsistent with it in the published dump file. Fig.\ref{fig:infobox-template} gives a mapping result of display labels and dump labels in \emph{Interstellar}' infobox. The left is infobox, the middle is a snap from dump file in Wikipedia. As we've seen, attribute label in infobox is different from it in dump file. We explore the display labels as property labels in Wikipedia rather than dump labels extracted from raw data. 
+    \item In Wikipedia, the attribute label displayed in the webpage infobox is inconsistent with it in the published dump file. Fig.\ref{fig:infobox-template} gives a mapping result of display labels and dump labels in \emph{Interstellar}' infobox. The left is infobox, the middle is a snap from dump file in Wikipedia. As we've seen, attribute label in infobox is different from it in dump file. We explore the display labels as property labels in Wikipedia rather than dump labels extracted from raw data.
     \begin{figure}[ht]
         \centerline{\includegraphics[width=1\columnwidth]{fig/infobox-template}}
         \caption{Comparison of display label and dump label in \emph{Interstellar} infobox}
@@ -195,12 +195,12 @@ We harvest four types of information during this stage. (1) General-properties o
 
 \section{Cross-lingual Integration}
 \label{sec:clkbb}
-To construct a cross-lingual knowledge base with existing structured data, firstly we gather cross-lingual links which can help match the same entity in two languages and extend the link set. Secondly, we integrate this four encyclopedias, which is to say, respectively merging concepts, instances and properties from the four sources if they represent the same thing. Thirdly, we prune the taxonomy generated from concept relationships to make it more accurate. At last, we make instances and properties attached to complete the cross-lingual knowledge base construction. 
+To construct a cross-lingual knowledge base with existing structured data, firstly we gather cross-lingual links which can help match the same entity in two languages and extend the link set. Secondly, we integrate this four encyclopedias, which is to say, respectively merging concepts, instances and properties from the four sources if they represent the same thing. Thirdly, we prune the taxonomy generated from concept relationships to make it more accurate. At last, we make instances and properties attached to complete the cross-lingual knowledge base construction.
 
 \subsection{Cross-lingual Linking}
 There are \textcolor{red}{number} cross-lingual links between English and Chinese, which constitute the initial cross-lingual link set of concepts and instances. Moreover, we utilize the language-independent method in \cite{wang2012cross} to extend the language-link set. With the linkage factor graph model, we harvest a cross-lingual links extension as many as 20 thousands with an ideal precision 85.5\% and a recall of 88.1\% between English Wikipedia and Baidu Baike.
 
-However, due to using templates, Infobox-properties have no obvious cross-lingual links. To acquire such links, we take the following steps: (1) Given a matched template, which means $T_{e}$ and $T_{z}$ are cross-lingual pairs, find the display labels mapping the same dump label. That is to say, to two pairs, $p_{e}$ in $T_{e}$ and $p_{z}$ in $T_{z}$, if $tl_{e}$ is equal to $tl_{z}$, $<dl_{e},dl_{z}>$ are cross-lingual properties; (2) Given the English and Chinese infoboxes of a matched instance, compare their templates, which are English template $T_{e}(a_{e})$ and a Chinese template $T_{z}(a_{z})$ in which $a_{e}$ and $a_{z}$ direct to the same entity, find the matched display labels mapping to the same dump label; (3) Given the English and Chinese infoboxes of a matched instance, for datatype properties, compare the similarity of literal value; to object properties, check whether the value refer to the same entity. 
+However, due to using templates, Infobox-properties have no obvious cross-lingual links. To acquire such links, we take the following steps: (1) Given a matched template, which means $T_{e}$ and $T_{z}$ are cross-lingual pairs, find the display labels mapping the same dump label. That is to say, to two pairs, $p_{e}$ in $T_{e}$ and $p_{z}$ in $T_{z}$, if $tl_{e}$ is equal to $tl_{z}$, $<dl_{e},dl_{z}>$ are cross-lingual properties; (2) Given the English and Chinese infoboxes of a matched instance, compare their templates, which are English template $T_{e}(a_{e})$ and a Chinese template $T_{z}(a_{z})$ in which $a_{e}$ and $a_{z}$ direct to the same entity, find the matched display labels mapping to the same dump label; (3) Given the English and Chinese infoboxes of a matched instance, for datatype properties, compare the similarity of literal value; to object properties, check whether the value refer to the same entity.
 
 In order to make all these encyclopedias link to each other, we unify the same concept, instance and property from four sources, and give them unique identifiers. For instance, we merge instances by the following method:
 
@@ -218,9 +218,9 @@ The process of unify concept and property is the same as instance. Meanwhile, al
 
 \subsection{Taxonomy Prune}
 \label{sec:tp}
-As a result of combining multi-source information without verifying, the taxonomy of concept system is mussy. For example, \textcolor{red}{example}. Therefore, we introduce the method from\cite{wang2014cross} to detect the correct \textit{subClassOf} and \textit{instanceOf} relations from \textit{subCategoryOf} and \textit{articleOf}. Table. \ref{tab:} shows some examples of correct relations. In particular, some language-dependent literal and language-independent structural features are defined to vectorize each concept or instance. Employing these features, a Yes-or-Not binary-classification model is trained based on Logistic Regression. The whole process is iterative by retraining model with assured result to get higher precision. Confirming a right \textit{subClassOf} or \textit{instanceOf} not only depends on the prediction result of classification, but also cross-lingual knowledge validation, which ensures correctness if both the mapped English and Chinese relations are correct. 
+As a result of combining multi-source information without verifying, the taxonomy of concept system is mussy. For example, \textcolor{red}{example}. Therefore, we introduce the method from\cite{wang2014cross} to detect the correct \textit{subClassOf} and \textit{instanceOf} relations from \textit{subCategoryOf} and \textit{articleOf}. Table. \ref{tab:} shows some examples of correct relations. In particular, some language-dependent literal and language-independent structural features are defined to vectorize each concept or instance. Employing these features, a Yes-or-Not binary-classification model is trained based on Logistic Regression. The whole process is iterative by retraining model with assured result to get higher precision. Confirming a right \textit{subClassOf} or \textit{instanceOf} not only depends on the prediction result of classification, but also cross-lingual knowledge validation, which ensures correctness if both the mapped English and Chinese relations are correct.
 
-The ideal result of pruning is a tree, whose edges, nodes, and leaves separately denote relations, concepts and instances. However, since getting rid of incorrect entity relations without consideration of integrity, a forest result is inevitable. 
+The ideal result of pruning is a tree, whose edges, nodes, and leaves separately denote relations, concepts and instances. However, since getting rid of incorrect entity relations without consideration of integrity, a forest result is inevitable.
 
 \section{Result}
 \label{sec:result}
@@ -276,16 +276,17 @@ Sum                    & 1,093,855 & \multicolumn{1}{c|}{-} & 11,721,238        
 \end{tabular}
 \end{table}
 
-Our knowledge graph is organized in Openlink Virtuoso, which is a data management platform covering various server, including triple store. 
+Our knowledge graph is organized in Openlink Virtuoso, which is a data management platform rendering various services, including triple store.
 
 \subsection{Web Access to Knowledge Base}
-We provide a website to present an intuitive graph of our knowledge in the forms of class, instance and property. Fig.\ref{fig:xlore} shows sample pages of the integrated data. Users can choose language preference which is convenient for both English speaker and Chinese speaker. In the class webpage, we exhibit the label, super classes, subclasses, related topics, properties and instances of the specific class in bilingual way on condition that the corresponding English entries or Chinese entries exist.  In the instance webpage we display bilingual label, super classes, related classes, abstract, property key value pairs, images and references. In the property webpage, we present bilingual label, domains, ranges, and related instances of each property. 
+We provide a website to present an intuitive graph of our knowledge in the forms of class, instance and property. Fig.\ref{fig:xlore} shows sample pages of the integrated data. Users can choose language preference which is convenient for both English speaker and Chinese speaker. In the class webpage, we exhibit the label, super classes, subclasses, related topics, properties and instances of the specific class in bilingual way on condition that the corresponding English entries or Chinese entries exist.  In the instance webpage we display bilingual label, super classes, related classes, abstract, property key value pairs, images and references. In the property webpage, we present bilingual label, domains, ranges, and related instances of each property.
 \begin{figure}[ht]
     \centerline{\includegraphics[width=1\columnwidth]{fig/xlore}}
     \caption{Sample Pages of Class, Instance and Property}
     \label{fig:xlore}
 \end{figure}%
-Beside these user-friendly pages, we provide two ways to access our knowledge base: via the search engine shown in Fig.\ref{fig:search-engine}, or via SPARQL endpoint shown in Fig.\ref{fig:sparql-endpoint}. For users who know little about semantic web, they can query by inputing related text into searchbox and search to get entities with similar label. To present practicable result, An index is generated over all entities. We as well provide SPARQL interface for professional users to query our knowledge graph. Users can choose the language tags of their desired results by \textbf{"filter(langMatches(?label),"en"))"} or \textbf{"filter(langMatches (?label),"zh"))"}.
+Beside these user-friendly pages, we provide two ways to access our knowledge base: via the search engine shown in Fig.\ref{fig:search-engine}, or via SPARQL endpoint shown in Fig.\ref{fig:sparql-endpoint}. For general users, they can make a query by inputing related text into searchbox and search to get entities with similar label. To present practicable result, An index is generated over all entities. We as well provide SPARQL interface for professional users to query our knowledge graph. Users can choose the language tags of their desired results by \textbf{"filter(langMatches(?label),"en"))"} or \textbf{"filter(langMatches (?label),"zh"))"}. For example, to get the English label of an instance, the query is: select * where {<http://xlore.org/instance/100> <http://www.w3.org/2000/01/rdf-schema#label> ?label. filter(langMatches(?label),"en"))}.
+
 %\begin{figure}
 %    \centering
 %    \begin{minipage}[t]{0.8\textwidth}
@@ -315,7 +316,7 @@ Universal WordNet(UWN)\cite{de2012uwn} is a large multilingual lexical knowledge
 
 \section{Conclusion}
 \label{sec:con}
-This paper presents a procedure of building a Chinese-English cross-lingual knowledge base from four encyclopedia sources. At first, we extract structured information and unify data format. Then a cross-lingual language link set is generated to help combine the bilingual sources. Besides, an extension method is applied to enrich the links. To refine our dataset, we also conduct pruning work on taxonomy. Finally, we acquire a knowledge base containing XXX concepts, XXX instances and XXX properties. Currently, a SPARQL query interface is provided to access the knowledge base. 
+This paper presents a procedure of building a Chinese-English cross-lingual knowledge base from four encyclopedia sources. At first, we extract structured information and unify data format. Then a cross-lingual language link set is generated to help combine the bilingual sources. Besides, an extension method is applied to enrich the links. To refine our dataset, we also conduct pruning work on taxonomy. Finally, we acquire a knowledge base containing XXX concepts, XXX instances and XXX properties. Currently, a SPARQL query interface is provided to access the knowledge base.
 
 %\section*{Acknowledgement}
 %Thanks anonymous reviewers for their valuable suggestions that help us improve the quality of the paper. Thanks Prof. Chua Tat-Seng from National University of Singapore for discussion. The work is supported by 973 Program (No. 2014CB340504 ), NSFC-ANR (No. 61261130588), Tsinghua University Initiative Scientific Research Program (No. 20131089256) and THU-NUS NExT Co-Lab.
