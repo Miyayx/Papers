@@ -1,5 +1,93 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
+
+\bibitem{al2015conceptual}
+Al-Zoghby, A.M., Shaalan, K.: Conceptual search for arabic web content. In:
+  Computational Linguistics and Intelligent Text Processing, pp. 405--416.
+  Springer (2015)
+
+\bibitem{auer2007dbpedia}
+Auer, S., Bizer, C., Kobilarov, G., Lehmann, J., Cyganiak, R., Ives, Z.:
+  Dbpedia: A nucleus for a web of open data. Springer (2007)
+
+\bibitem{bollacker2008freebase}
+Bollacker, K., Evans, C., Paritosh, P., Sturge, T., Taylor, J.: Freebase: a
+  collaboratively created graph database for structuring human knowledge. In:
+  Proceedings of the 2008 ACM SIGMOD international conference on Management of
+  data. pp. 1247--1250. ACM (2008)
+
+\bibitem{dutta2013integrating}
+Dutta, A., Meilicke, C., Niepert, M., Ponzetto, S.P.: Integrating open and
+  closed information extraction: Challenges and first steps. In: NLP-DBPEDIA@
+  ISWC (2013)
+
+\bibitem{fernandez2011generic}
+Fern{\'a}ndez-Tob{\'\i}as, I., Cantador, I., Kaminskas, M., Ricci, F.: A
+  generic semantic-based framework for cross-domain recommendation. In:
+  Proceedings of the 2nd International Workshop on Information Heterogeneity
+  and Fusion in Recommender Systems. pp. 25--32. ACM (2011)
+
+\bibitem{kaminskas2012knowledge}
+Kaminskas, M., Fern{\'a}ndez-Tob{\'\i}as, I., Ricci, F., Cantador, I.:
+  Knowledge-based music retrieval for places of interest. In: Proceedings of
+  the second international ACM workshop on Music information retrieval with
+  user-centered and multimodal strategies. pp. 19--24. ACM (2012)
+
+\bibitem{mahdisoltani2014yago3}
+Mahdisoltani, F., Biega, J., Suchanek, F.: Yago3: A knowledge base from
+  multilingual wikipedias. In: 7th Biennial Conference on Innovative Data
+  Systems Research. CIDR 2015 (2014)
+
+\bibitem{de2012uwn}
+de~Melo, G., Weikum, G.: Uwn: A large multilingual lexical knowledge base. In:
+  Proceedings of the ACL 2012 System Demonstrations. pp. 151--156. Association
+  for Computational Linguistics (2012)
+
+\bibitem{mendes2011evaluating}
+Mendes, P.N., Daiber, J., Jakob, M., Bizer, C.: Evaluating dbpedia spotlight
+  for the tac-kbp entity linking task. In: Proceedings of the TACKBP 2011
+  Workshop. vol. 116, pp. 118--120 (2011)
+
+\bibitem{mendes2012dbpedia}
+Mendes, P.N., Jakob, M., Bizer, C.: Dbpedia: A multilingual cross-domain
+  knowledge base. In: LREC. pp. 1813--1817 (2012)
+
+\bibitem{niu2011zhishi}
+Niu, X., Sun, X., Wang, H., Rong, S., Qi, G., Yu, Y.: Zhishi. me-weaving
+  chinese linking open data. In: The Semantic Web--ISWC 2011, pp. 205--220.
+  Springer (2011)
+
+\bibitem{pan2012building}
+Pan, J., Wang, H., Yu, Y.: Building large scale relation kb from text. In: 11th
+  International Semantic Web Conference ISWC 2012. p.~93. Citeseer (2012)
+
+\bibitem{passant2010dbrec}
+Passant, A.: dbrec—music recommendations using dbpedia. In: The Semantic
+  Web--ISWC 2010, pp. 209--224. Springer (2010)
+
+\bibitem{shen2012linden}
+Shen, W., Wang, J., Luo, P., Wang, M.: Linden: linking named entities with
+  knowledge base via semantic knowledge. In: Proceedings of the 21st
+  international conference on World Wide Web. pp. 449--458. ACM (2012)
+
+\bibitem{wang2014publishing}
+Wang, H., Wu, T., Qi, G., Ruan, T.: On publishing chinese linked open schema.
+  In: The Semantic Web--ISWC 2014, pp. 293--308. Springer (2014)
+
+\bibitem{wang2012cross}
+Wang, Z., Li, J., Wang, Z., Tang, J.: Cross-lingual knowledge linking across
+  wiki knowledge bases. In: Proceedings of the 21st international conference on
+  World Wide Web. pp. 459--468. ACM (2012)
+
+\bibitem{wang2012building}
+Wang, Z., Wang, Z., Li, J., Pan, J.Z.: Building a large scale knowledge base
+  from chinese wiki encyclopedia. In: The Semantic Web, pp. 80--95. Springer
+  (2012)
+
+\bibitem{wang2014cross}
+Wang, Z., Li, J., Li, S., Li, M., Tang, J., Zhang, K., Zhang, K.: Cross-lingual
+  knowledge validation based taxonomy derivation from heterogeneous online
+  wikis. In: Twenty-Eighth AAAI Conference on Artificial Intelligence (2014)
 
 \end{thebibliography}
