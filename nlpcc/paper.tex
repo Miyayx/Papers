@@ -12,6 +12,16 @@
 \usepackage{enumerate}
 \usepackage{multirow}
 
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=STHeiti, ItalicFont=STKaiti]{STSong}
+\setCJKsansfont[BoldFont=STHeiti]
+\setCJKmonofont{STFangsong}
+
+%\usepackage[BoldFont,SlantFont,CJKchecksingle]{xeCJK}
+%\setCJKmainfont[BoldFont=SimHei]{SimSun}
+%\setCJKmonofont{SimSun}% 设置缺省中文字体
+%\usepackage{CJKutf8}
+
 \urldef{\mailthu}\path|{lmy13}@tsinghua.edu.cn|
 \urldef{\mailsy}\path|{fantasysy}@sina.com|
 \urldef{\mailgmail}\path|{meeya.yx, shiyao, wangzigo}@gmail.com|
@@ -19,7 +29,7 @@
 \newcommand{\para}[1]{\vspace{0.1cm}\noindent\textbf{#1}}
 
 \begin{document}
-\begin{CJK*}{UTF8}{song}
+%\begin{CJK*}{UTF8}{song}
 \mainmatter
 
 \title{Building Large-Scale Cross-lingual Knowledge Base from Multi-Wiki}
@@ -224,36 +234,23 @@ The ideal result after pruning is a tree, whose edges, nodes, and leaves separat
 \subsection{Extracted Knowledge Base}
 We collect the resources from 4 wiki sites, English and Chinese Wikipedia dump files in Dec, 2014, Hudong html pages until May, 2014, and Baidu html pages until September, 2014. Each of the wikis has three types of information, which can be utilized for constructing our ontology, namely, specific articles, classification system, and attribute of articles. We extract each raw data, then form the extracted information into well-structured data. Table \ref{tab:extract-result} the result we get after elementary extraction on 4 different wiki sources.
 
-\begin{table}[h]
-\small
-\centering
-\caption{Statistics of elementary extraction result}
-\label{tab:extract-result}
-    \begin{tabular}{|l|l|l|l|l|}
-        \hline
-                   & Enwiki  & Zhwiki & Hudong  & Baidu   \\ \hline
-        \#Instance & 4304113 & 662650 & 5590751 & 5622404 \\ \hline
-        \#Class    & 982432  & 159705 & 31802   & 1300    \\ \hline
-        \#Property & 43976   & 18842  & 1187    & 139634  \\ \hline
-    \end{tabular}
+\begin{table}[]
+    \small
+    \centering
+    \caption{Statistics of elementary extraction result}
+    \label{tab:extract-result}
+        \begin{tabular}{|l|l|l|l|l|}
+            \hline
+                       & Enwiki  & Zhwiki & Hudong  & Baidu   \\ \hline
+            \#Instance & 4304113 & 662650 & 5590751 & 5622404 \\ \hline
+            \#Class    & 982432  & 159705 & 31802   & 1300    \\ \hline
+            \#Property & 43976   & 18842  & 1187    & 139634  \\ \hline
+        \end{tabular}
 \end{table}
 
 Besides, we obtain 227 thousand language links between English and Chinese in Wikipeidia, and increase the number by 191 thousand enwiki-baidu language links.
 
-We create URIs to identify each element and provide corresponding information if users look up elements over HTTP protocol to achieve the knowledge base. Table \ref{tab:uris} lists the defined URIs.
-\begin{table}[h]
-\small
-\centering
-\caption{URIs for class, instance, property in our knowledge base}
-\label{tab:uris}
-    \begin{tabular}{|c|c|}
-        \hline
-        Type     & URI                     \\ \hline
-        Class    & http://clkb/class/id    \\ \hline
-        Instance & http://clkb/instance/id \\ \hline
-        Property & http://clkb/property/id \\ \hline
-    \end{tabular}
-\end{table}
+We create URIs \uri{http://clkb/type/id} (type could be \textit{class}, \textit{instance}, \textit{property}) to identify each element and provide corresponding information if users look up elements over HTTP protocol to achieve the knowledge base. 
 
 After fusing the heterogeneous resources, we harvest a cross-lingual graph with 1,093,855 classes, 200,223 properties, and 11,721,238 instances respectively. With different methods of extraction and language link discovery, these three kinds of entries show different results in languages. We give a breakdown of both Chinese knowledge and English knowledge in Table \ref{tab:kb-result}.
 
@@ -286,15 +283,14 @@ We provide a website to present an intuitive graph of our knowledge in the forms
 Beside these user-friendly pages, we provide two ways to access our knowledge base: via the search engine shown in Fig.\ref{fig:search-engine}, or via SPARQL endpoint shown in Fig.\ref{fig:sparql-endpoint}. For general users, they can make a query by inputing related text into searchbox and search to get entities with similar label. To present practicable result, An index is generated over all entities. We as well provide SPARQL interface for professional users to query our knowledge graph. Users can choose the language tags of their desired results by \textbf{"filter(langMatches(?label),"en"))"} or \textbf{"filter(langMatches (?label),"zh"))"}. For example, to get the English label of an instance, the query is: select * where {$<$\url{http://clkb/instance/100}$>$ $<$\url{http://www.w3.org/2000/01/rdf-schema#label}$>$ ?label. filter(langMatches(?label),"en"))}.
 
 \begin{figure}
-    \centering
-    \begin{minipage}[t]{0.8\textwidth}
-        \centerline{\includegraphics[width=0.8\columnwidth]{fig/search-engine}}
-        \caption{A Sample Query for Using Search Box }
+    \begin{minipage}[t]{0.5\textwidth}
+        \centerline{\includegraphics[width=5.5cm,height=3cm]{fig/search-engine}}
+        \caption{A picture of Search Box}
         \label{fig:search-engine}
     \end{minipage}%
-    \begin{minipage}[t]{0.8\textwidth}
-        \centerline{\includegraphics[width=0.8\columnwidth]{fig/sparql-endpoint}}
-        \caption{A SPARQL Sample Query over the Knowledge Base}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centerline{\includegraphics[width=5.5cm,height=3cm]{fig/sparql-endpoint}}
+        \caption{A SPARQL Sample Query}
         \label{fig:sparql-endpoint}
     \end{minipage}%
 \end{figure}
@@ -304,7 +300,7 @@ Beside these user-friendly pages, we provide two ways to access our knowledge ba
 In this section, we introduce some related knowledge bases and cross-lingual knowledge linking methods.
 \subsection{Chinese Knowledge Bases}
 Currently, several large-scale Chinese knowledge bases have been generated. Zhishi.me\cite{niu2011zhishi,wang2014publishing} is the first published Chinese large-scale Linking Open Data. It acquires structural information from three original sources, Chinese Wikipedia, Baidu Baike and Hudong Baike and gains more than 5 million distinct entities. Zhishi.me helps generate knowledge base focused on relations in Junfeng Pan’s work\cite{pan2012building}.
-Similar with Zhishi.me, CKB\cite{wang2012building} is created from Hudong Baike. It first learns an ontology based on category system and properties, and then collects 19542 classes, 2381 properties, 802593 instances. Besides using existing encyclopedias, CASIA-KB employs other types of sources(e.g. microblog posts, news pages, images) to enrich the structured knowledge.
+Similar with Zhishi.me, CKB\cite{wang2012building} is created from Hudong Baike. It first learns an ontology based on category system and properties, and then collects 19,542 classes, 2,381 properties, 802,593 instances. Besides using existing encyclopedias, CASIA-KB employs other types of sources(e.g. microblog posts, news pages, images) to enrich the structured knowledge.
 \subsection{Cross-lingual Knowledge Bases}
 DBpedia \cite{auer2007dbpedia,mendes2012dbpedia} is one of the most used cross-lingual knowledge base in the world. It extracts various kinds of structured information from Wikipedia and employ the multilingual characteristic of Wikipedia to generate 97 language versions of content. This knowledge base is widely applied in many domains, including media recommendation \cite{fernandez2011generic,kaminskas2012knowledge}, entity linking\cite{mendes2011evaluating} and information extraction \cite{dutta2013integrating}. Universal WordNet(UWN)\cite{de2012uwn} is a large multilingual lexical knowledge base which is build from WordNet and enriched its entities from Wikipedia. It is constructed using sophisticated knowledge extraction, link prediction, information integration, and taxonomy induction methods. The API is available to over 200 languages and more than 16 million words and names. UWN provides semantic relationship of list of word meanings for Aya's work on classual search \cite{al2015classual}
 
@@ -313,7 +309,7 @@ DBpedia \cite{auer2007dbpedia,mendes2012dbpedia} is one of the most used cross-l
 
 \section{Conclusion}
 \label{sec:con}
-This paper presents a procedure of building a Chinese-English CLKB from four encyclopedia sources. At first, we extract structured information and unify data format. Then a cross-lingual language link set is generated and expanded to help combine the bilingual sources. To refine our dataset, we also conduct pruning work on taxonomy. Finally, we acquire a CLKB containing XXX classes, XXX instances and XXX properties. Currently, a website and SPARQL query interface is provided to access the knowledge base.
+This paper presents a procedure of building a Chinese-English CLKB from four encyclopedia sources. At first, we extract structured information and unify data format. Then a cross-lingual language link set is generated and expanded to help combine the bilingual sources. To refine our dataset, we also conduct pruning work on taxonomy. Finally, we acquire a CLKB containing 663,740 classes, 11,721,238 instances and 56,449 properties. Currently, a website and SPARQL query interface is provided to access the knowledge base.
 
 %\section*{Acknowledgement}
 %Thanks anonymous reviewers for their valuable suggestions that help us improve the quality of the paper. Thanks Prof. Chua Tat-Seng from National University of Singapore for discussion. The work is supported by 973 Program (No. 2014CB340504 ), NSFC-ANR (No. 61261130588), Tsinghua University Initiative Scientific Research Program (No. 20131089256) and THU-NUS NExT Co-Lab.
@@ -321,6 +317,6 @@ This paper presents a procedure of building a Chinese-English CLKB from four enc
 \bibliographystyle{splncs03}
 \bibliography{paper}
 
-\end{CJK*}
+%\end{CJK*}
 \end{document}
 
